@@ -1,0 +1,30 @@
+
+ <%- include('partials/header.ejs') %>
+
+ <main>  
+    <div class="box" id="heading">
+        <h1>
+         <%= locals.dayName %>, <%= locals.dateNumber %> <%= locals.monthName %>
+         </h1>
+    </div>
+    <div class="box"> 
+        <form class="item" action="/" method="post">
+          <input type="text" name="newItem" placeholder="New Item" autocomplete="off" required>
+          <button type="submit" name="list" value="<%- locals.dayName %>">+</button>
+        </form>
+        <div class="box">   
+            <% if(locals.tasksForToday) { %>
+                <% for(i = 0; i < tasksForToday.length; i++) { %>
+                    <div class="item">
+                        <input type="checkbox">
+                            <p>  
+                                <%= tasksForToday[i] %>
+                            </p>
+                    </div>
+                <%  } %>
+            <% } %>   
+        </div>
+  </div>
+</main>
+
+<%- include('partials/footer.ejs') %>
